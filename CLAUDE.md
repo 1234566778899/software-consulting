@@ -76,6 +76,12 @@ src/
 - Dominio: `cjsoftware.online` (Namecheap, comprado el 29/09/2026), apuntado a Vercel. `www` redirige al dominio raíz.
 - Google Search Console: propiedad de dominio `cjsoftware.online` verificada por TXT en Namecheap (no borrar ese registro);
   sitemap enviado. Por eso `GOOGLE_SITE_VERIFICATION` no hace falta.
+- En Vercel (solo Production): `NEXT_PUBLIC_SITE_URL=https://cjsoftware.online`, `CONTACT_FROM=C&J Software Consulting <no-reply@cjsoftware.online>`,
+  `RESEND_API_KEY` (Secret). `CONTACT_TO` no está definida: los avisos van a `site.email`. Cambiar variables exige redeploy.
+- Resend: dominio `cjsoftware.online` en región São Paulo, solo envío. DNS en Namecheap: TXT `resend._domainkey` (DKIM),
+  CNAME `rsend` y `send` (SPF) y TXT `_dmarc`. "Receiving" está apagado a propósito: pondría un MX en la raíz y chocaría con
+  el reenvío de correo de Namecheap. Si Resend rechaza un envío (p. ej. dominio sin verificar), `/api/contact` responde 502
+  y la solicitud no se guarda en ningún lado.
 
 ## Legal (Perú)
 
