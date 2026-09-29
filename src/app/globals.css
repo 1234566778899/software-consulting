@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canvas: #f5f4f0;
+  --surface: #ffffff;
+  --ink: #221f1d;
+  --ink-soft: #5d5853;
+  --ink-faint: #736e68;
+  --line: rgb(34 31 29 / 0.09);
+  --line-strong: rgb(34 31 29 / 0.18);
+  --night: #171513;
+  --night-2: #211e1b;
+  --wine: #7b1e2e;
+  --wine-deep: #5e1522;
+  --marker: #efd3d7;
+  --marker-strong: #e4b9bf;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-wine: var(--wine);
+  --color-wine-deep: var(--wine-deep);
+  --color-marker: var(--marker);
+  --color-marker-strong: var(--marker-strong);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-padding-top: 6rem;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--marker);
+  color: var(--ink);
+}
+
+.container-x {
+  width: 100%;
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Highlighter stroke behind key words */
+.mark {
+  background-image: linear-gradient(transparent 55%, var(--marker) 55%, var(--marker) 92%, transparent 92%);
+  padding-inline: 0.06em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Entrance: a single fadeInUp, like the reference (Elementor, 1.25s ease, no stagger) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 60px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.is-visible {
+  animation: fadeInUp 1.25s ease both;
+}
+/* Above the fold: movement without hiding the text, so it counts for LCP from the first paint. */
+@keyframes riseIn {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+}
+.rise {
+  animation: riseIn 1.25s ease both;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible,
+  .rise {
+    opacity: 1;
+    animation: none;
+  }
+  .marquee {
+    animation: none;
+  }
+}
+
+/* Printing (e.g. the Complaints Book receipt): hide site chrome. */
+@media print {
+  header,
+  #site-menu,
+  .print-hide {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  main {
+    padding-top: 0 !important;
+  }
+  .reveal,
+  .rise {
+    opacity: 1 !important;
+    animation: none !important;
+  }
 }
