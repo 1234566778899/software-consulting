@@ -27,12 +27,9 @@ const es = {
     close: "Cerrar menú",
     links: [
       { href: "/#proyectos", label: "Proyectos" },
-      { href: "/#enfoque", label: "Nuestro enfoque" },
       { href: "/#servicios", label: "Servicios" },
       { href: "/nosotros", label: "Nosotros" },
-      { href: "/#proceso", label: "Proceso" },
       { href: "/blog", label: "Blog" },
-      { href: "/#preguntas", label: "Preguntas frecuentes" },
       { href: "/#contacto", label: "Contacto" },
     ],
     language: "English",

@@ -29,12 +29,9 @@ const en: Dictionary = {
     close: "Close menu",
     links: [
       { href: "/#proyectos", label: "Work" },
-      { href: "/#enfoque", label: "Our approach" },
       { href: "/#servicios", label: "Services" },
       { href: "/nosotros", label: "About us" },
-      { href: "/#proceso", label: "Process" },
       { href: "/blog", label: "Blog" },
-      { href: "/#preguntas", label: "FAQ" },
       { href: "/#contacto", label: "Contact" },
     ],
     language: "Español",
