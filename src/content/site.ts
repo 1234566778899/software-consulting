@@ -1,6 +1,6 @@
 // Datos de la firma. Reemplazar los valores marcados como PLACEHOLDER.
 
-// Dominio canónico: define NEXT_PUBLIC_SITE_URL (p. ej. https://cjsoftware.pe) en producción.
+// Dominio canónico: define NEXT_PUBLIC_SITE_URL (https://cjsoftware.online) en producción.
 // En Vercel, si no está definido, se usa el dominio de producción del proyecto.
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??

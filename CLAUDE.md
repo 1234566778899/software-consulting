@@ -73,7 +73,7 @@ src/
 
 - Variables: `NEXT_PUBLIC_SITE_URL` (dominio final, obligatorio en producción; sin ella `robots.txt` bloquea la indexación a propósito),
   `GOOGLE_SITE_VERIFICATION` (opcional), `RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM` (correos del contacto, newsletter y Libro).
-- Dominio sugerido: `cjsoftware.pe` (libre al 29/09/2026).
+- Dominio: `cjsoftware.online` (Namecheap, comprado el 29/09/2026), apuntado a Vercel. `www` redirige al dominio raíz.
 
 ## Legal (Perú)
 
